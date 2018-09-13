@@ -3,7 +3,7 @@
 # Test Suit for testing programs.
 
 usage() {
-	echo -e "Usage: $0 suite-file program\nThe argument suite-file is the name of a file containing a list of filename stems, and the argument program is the name of the program to be run." >&2
+	echo -e "Usage: $0 <suite-file> <program>\nThe argument suite-file is the name of a file containing a list of filename stems, and the argument program is the name of the program to be run." >&2
 }
 
 # Checks to see if the program was ran with 2 arguments.
