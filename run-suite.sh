@@ -13,7 +13,6 @@ if [ $# -ne 2 ]; then
 fi
 
 for test in $(cat $1); do 
-	
 	for s in 'in' 'out'; do 
 		ls -p | egrep  "^${test}\.${s}$" > /dev/null
 		if [ $? -ne 0 ]; then
@@ -31,9 +30,9 @@ for test in $(cat $1); do
 	
 	ls -p | egrep "^${test}\.args$" > /dev/null
         if [ $? -eq 0 ]; then
-                cat ${test}.in | ${2} $(cat ${test}.args) >> ${d1}
+                cat ${test}.in | ${2} $(cat ${test}.args) > ${d1}	
         else
-                cat ${test}.in | ${2} >> ${d1}
+                cat ${test}.in | ${2} > ${d1}
         fi	
 	
 	cmp -s ${d1} ${test}.out > /dev/null
@@ -46,7 +45,8 @@ for test in $(cat $1); do
 		cat ${test}.out
 		echo "Actual:"
 		cat ${d1}
-		
+	else
+		echo "Test Passed: ${test}"
 	fi
 	rm ${d1}	
 	
